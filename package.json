@@ -1,0 +1,84 @@
+{
+    "name": "mily",
+    "displayName": "米粒鼓励师",
+    "description": "亲爱的，起身喝杯奶茶休息一会儿吧",
+    "version": "0.2.1",
+    "publisher": "milyyy",
+    "icon": "logo.png",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "米粒",
+        "提醒",
+        "鼓励"
+    ],
+    "bugs": {
+        "url": "https://github.com/milyyy/vscode_mily/issues",
+        "email": "milysong@163.com"
+    },
+    "homepage": "https://github.com/milyyy/vscode_mily/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/milyyy/vscode_mily.git"
+    },
+    "activationEvents": [
+        "onCommand:mily.showReminderView",
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "mily.showReminderView",
+                "title": "打开提醒页面",
+                "category": "mily"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "米粒",
+            "properties": {
+                "mily.reminderViewIntervalInMinutes": {
+                    "type": "number",
+                    "default": 60,
+                    "description": "展示提醒页面的时间间隔（分钟）"
+                },
+                "mily.title": {
+                    "type": "string",
+                    "default": "亲爱的，亲爱的，代码写久了，该休息啦~",
+                    "description": "页面内展示文字"
+                },
+                "mily.type": {
+                    "type": "string",
+                    "default": "default",
+                    "description": "类型：default:默认图；url：网络图"
+                },
+                "mily.customImages": {
+                    "type": "array",
+                    "default": [
+                        "http://b-ssl.duitang.com/uploads/item/201806/04/20180604090459_gqqjo.jpg"
+                    ],
+                    "description": "用户设置图片地址"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    }
+}
